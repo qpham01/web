@@ -7,32 +7,32 @@ using System.Collections.Generic;
 namespace TestMakerFreeWebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class QuestionController : Controller
+    public class AnswerController : Controller
     {
-        // GET api/question/all 
-        [HttpGet("All/{quizId}")]
-        public IActionResult All(int quizId)
+        // GET api/answer/all 
+        [HttpGet("All/{questionId}")]
+        public IActionResult All(int questionId)
         {
-            var sampleQuestions = new List<QuestionViewModel>();
+            var sampleAnswers = new List<AnswerViewModel>();
 
-            // add a first sample question 
-            sampleQuestions.Add(new QuestionViewModel()
+            // add a first sample answer 
+            sampleAnswers.Add(new AnswerViewModel()
             {
                 Id = 1,
-                QuizId = quizId,
-                Text = "What do you value most in your life?",
+                QuestionId = questionId,
+                Text = "Friends and family",
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now
             });
 
-            // add a bunch of other sample questions 
+            // add a bunch of other sample answers 
             for (int i = 2; i <= 5; i++)
             {
-                sampleQuestions.Add(new QuestionViewModel()
+                sampleAnswers.Add(new AnswerViewModel()
                 {
                     Id = i,
-                    QuizId = quizId,
-                    Text = String.Format("Sample Question {0}", i),
+                    QuestionId = questionId,
+                    Text = String.Format("Sample Answer {0}", i),
                     CreatedDate = DateTime.Now,
                     LastModifiedDate = DateTime.Now
                 });
@@ -40,7 +40,7 @@ namespace TestMakerFreeWebApp.Controllers
 
             // output the result in JSON format 
             return new JsonResult(
-                sampleQuestions,
+                sampleAnswers,
                 new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
@@ -49,10 +49,10 @@ namespace TestMakerFreeWebApp.Controllers
 
         #region RESTful conventions methods 
         /// <summary> 
-        /// Retrieves the Question with the given {id} 
+        /// Retrieves the Answer with the given {id} 
         /// </summary> 
-        /// &lt;param name="id">The ID of an existing Question</param> 
-        /// <returns>the Question with the given {id}</returns> 
+        /// &lt;param name="id">The ID of an existing Answer</param> 
+        /// <returns>the Answer with the given {id}</returns> 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -60,29 +60,29 @@ namespace TestMakerFreeWebApp.Controllers
         }
 
         /// <summary> 
-        /// Adds a new Question to the Database 
+        /// Adds a new Answer to the Database 
         /// </summary> 
-        /// <param name="m">The QuestionViewModel containing the data to insert</param> 
+        /// <param name="m">The AnswerViewModel containing the data to insert</param> 
         [HttpPut]
-        public IActionResult Put(QuestionViewModel m)
+        public IActionResult Put(AnswerViewModel m)
         {
             throw new NotImplementedException();
         }
 
         /// <summary> 
-        /// Edit the Question with the given {id} 
+        /// Edit the Answer with the given {id} 
         /// </summary> 
-        /// <param name="m">The QuestionViewModel containing the data to update</param> 
+        /// <param name="m">The AnswerViewModel containing the data to update</param> 
         [HttpPost]
-        public IActionResult Post(QuestionViewModel m)
+        public IActionResult Post(AnswerViewModel m)
         {
             throw new NotImplementedException();
         }
 
         /// <summary> 
-        /// Deletes the Question with the given {id} from the Database 
+        /// Deletes the Answer with the given {id} from the Database 
         /// </summary> 
-        /// <param name="id">The ID of an existing Question</param> 
+        /// <param name="id">The ID of an existing Answer</param> 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

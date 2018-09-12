@@ -7,16 +7,16 @@ using System.Collections.Generic;
 namespace TestMakerFreeWebApp.Controllers
 {
     [Route("api/[controller]")]
-    public class QuestionController : Controller
+    public class ResultController : Controller
     {
         // GET api/question/all 
         [HttpGet("All/{quizId}")]
         public IActionResult All(int quizId)
         {
-            var sampleQuestions = new List<QuestionViewModel>();
+            var sampleResults = new List<ResultViewModel>();
 
-            // add a first sample question 
-            sampleQuestions.Add(new QuestionViewModel()
+            // add a first sample result 
+            sampleResults.Add(new ResultViewModel()
             {
                 Id = 1,
                 QuizId = quizId,
@@ -25,10 +25,10 @@ namespace TestMakerFreeWebApp.Controllers
                 LastModifiedDate = DateTime.Now
             });
 
-            // add a bunch of other sample questions 
+            // add a bunch of other sample results 
             for (int i = 2; i <= 5; i++)
             {
-                sampleQuestions.Add(new QuestionViewModel()
+                sampleResults.Add(new ResultViewModel()
                 {
                     Id = i,
                     QuizId = quizId,
@@ -40,7 +40,7 @@ namespace TestMakerFreeWebApp.Controllers
 
             // output the result in JSON format 
             return new JsonResult(
-                sampleQuestions,
+                sampleResults,
                 new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
@@ -49,10 +49,10 @@ namespace TestMakerFreeWebApp.Controllers
 
         #region RESTful conventions methods 
         /// <summary> 
-        /// Retrieves the Question with the given {id} 
+        /// Retrieves the Result with the given {id} 
         /// </summary> 
-        /// &lt;param name="id">The ID of an existing Question</param> 
-        /// <returns>the Question with the given {id}</returns> 
+        /// &lt;param name="id">The ID of an existing Result</param> 
+        /// <returns>the Result with the given {id}</returns> 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -60,29 +60,29 @@ namespace TestMakerFreeWebApp.Controllers
         }
 
         /// <summary> 
-        /// Adds a new Question to the Database 
+        /// Adds a new Result to the Database 
         /// </summary> 
-        /// <param name="m">The QuestionViewModel containing the data to insert</param> 
+        /// <param name="m">The ResultViewModel containing the data to insert</param> 
         [HttpPut]
-        public IActionResult Put(QuestionViewModel m)
+        public IActionResult Put(ResultViewModel m)
         {
             throw new NotImplementedException();
         }
 
         /// <summary> 
-        /// Edit the Question with the given {id} 
+        /// Edit the Result with the given {id} 
         /// </summary> 
-        /// <param name="m">The QuestionViewModel containing the data to update</param> 
+        /// <param name="m">The ResultViewModel containing the data to update</param> 
         [HttpPost]
-        public IActionResult Post(QuestionViewModel m)
+        public IActionResult Post(ResultViewModel m)
         {
             throw new NotImplementedException();
         }
 
         /// <summary> 
-        /// Deletes the Question with the given {id} from the Database 
+        /// Deletes the Result with the given {id} from the Database 
         /// </summary> 
-        /// <param name="id">The ID of an existing Question</param> 
+        /// <param name="id">The ID of an existing Result</param> 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
